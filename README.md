@@ -8,6 +8,10 @@ TwilioSharp is a set of C# Class Libraries that help you create applications tha
 * Setup a new account and phone number at [Twilio](http://twilio.com).
 * Create a new MVC 3 Site and put it up on the web (I recommend [AppHarbor](https://appharbor.com/account/new?referrerUsername=jacob4u2)).
 
+**Example Site**
+
+Check out the [Magical 8 Ball Answerizer 3000 Example Site](https://github.com/jgable/8Ball-MVC-3-TwilioSharp-Example) for more detail.
+
 ### Show teh Codez - Reply To A Text Message From MVC 3
 
 ```
