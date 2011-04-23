@@ -3,9 +3,9 @@
 TwilioSharp is a set of C# Class Libraries that help you create applications that take advantage of [Twilio's Awesome TwiML APIs](http://www.twilio.com/docs/api/twiml/).
 
 **Pre-Requisites**
-*  Download and Install [ASP.Net MVC 3 Tools](http://asp.net/mvc).
-*  Setup a new account and phone number at [Twilio](http://twilio.com).
-*  Create a new MVC 3 Site and put it up on the web (I recommend [AppHarbor](https://appharbor.com/account/new?referrerUsername=jacob4u2)).
+*   Download and Install [ASP.Net MVC 3 Tools](http://asp.net/mvc).
+*   Setup a new account and phone number at [Twilio](http://twilio.com).
+*   Create a new MVC 3 Site and put it up on the web (I recommend [AppHarbor](https://appharbor.com/account/new?referrerUsername=jacob4u2)).
 
 ### Show teh Codez - Reply To A Text Message From MVC 3
 
