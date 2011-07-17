@@ -274,11 +274,12 @@ namespace TwilioSharp.TwiML
         /// <param name="timeLimitMilliseconds">The time limit milliseconds.</param>
         /// <param name="statusCallbackUrl">The status callback URL.</param>
         /// <param name="callerIdNumber">The caller id number.</param>
+        /// <param name="record">UNDOCUMENTED: Whether to record this conference or not.</param>
         public TwiMLBuilder DialConference(string conferenceName, bool participantMuted = false, bool beepOnEnterOrExit = true, bool startConferenceOnEnter = true, bool endConferenceOnExit = false,
             string waitMusicUrl = "", ActionMethod waitMusicMethod = ActionMethod.POST, uint maxParticipants = 40,
             string actionUrl = "", ActionMethod methodUrl = ActionMethod.POST, uint timeoutSeconds = 30,
             bool hangupOnStar = false, uint timeLimitMilliseconds = 14400,
-            string statusCallbackUrl = "", string callerIdNumber = "")
+            string statusCallbackUrl = "", string callerIdNumber = "", bool? record = null)
         {
             return AddVerb(Verb.Dial,
                 string.Empty,
@@ -300,7 +301,8 @@ namespace TwilioSharp.TwiML
                         startConferenceOnEnter = startConferenceOnEnter,
                         endConferenceOnExit = endConferenceOnExit,
                         waitUrl = waitMusicUrl,
-                        waitMethod = waitMusicMethod
+                        waitMethod = waitMusicMethod,
+                        record = record
                     })
                 );
         }

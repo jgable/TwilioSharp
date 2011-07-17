@@ -22,13 +22,13 @@ namespace TwilioSharp.Test
             public Dictionary<string, string> Attributes { get; set; }
             public List<TestNode> Children { get; set; }
 
-            public static TestNode Create(string name, string value = "", Dictionary<string, string> dictionary = null, params TestNode[] children)
+            public static TestNode Create(string name, string value = "", Dictionary<string, string> attributes = null, params TestNode[] children)
             {
                 return new TestNode()
                 {
                     Name = name,
                     Value = value,
-                    Attributes = dictionary ?? new Dictionary<string, string>(),
+                    Attributes = attributes ?? new Dictionary<string, string>(),
                     Children = children.ToList()
                 };
             }
@@ -113,6 +113,53 @@ namespace TwilioSharp.Test
             CommonXMLAssert(response,
                 TestNode.Create("Dial", string.Empty, null,
                     TestNode.Create("Conference", "930-Standup")));
+        }
+
+        [TestMethod]
+        public void Dial_Conference_Should_Have_Record_Attribute_When_Passed_In_True()
+        {
+            var response = TwiMLBuilder
+                                .Build()
+                                .DialConference("930-Standup", record: true)
+                                .ToXmlResponse();
+
+            CommonXMLAssert(response,
+                TestNode.Create("Dial", string.Empty, null,
+                    TestNode.Create("Conference", "930-Standup", new Dictionary<string, string>
+                    {
+                        { "record", "true"}
+                    })));
+        }
+
+        [TestMethod]
+        public void Dial_Conference_Should_Have_Record_Attribute_When_Passed_In_False()
+        {
+            var response = TwiMLBuilder
+                                .Build()
+                                .DialConference("930-Standup", record: false)
+                                .ToXmlResponse();
+
+            CommonXMLAssert(response,
+                TestNode.Create("Dial", string.Empty, null,
+                    TestNode.Create("Conference", "930-Standup", new Dictionary<string, string>
+                    {
+                        { "record", "false"}
+                    })));
+        }
+
+        [TestMethod]
+        public void Dial_Conference_Should_NOT_Have_Record_Attribute_When_Not_Passed_In()
+        {
+            var response = TwiMLBuilder
+                                .Build()
+                                .DialConference("930-Standup")
+                                .ToXmlResponse();
+
+            var confNode = response.Descendants("Conference").FirstOrDefault();
+            Assert.IsNotNull(confNode);
+
+            var hasRecordAttribute = confNode.Attributes().Any(x => x.Name == "record");
+            Assert.IsFalse(hasRecordAttribute);
         }
 
         [TestMethod]
